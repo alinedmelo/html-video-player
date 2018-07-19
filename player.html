@@ -9,34 +9,29 @@
     <title>HTML5 Video Player</title>
 </head>
 <body>
-    <div id="video-player" class="video-player">
-        <div class="video">
-            <video poster="assets/thumb.jpg">
+    <div class="video-player">
+        <div class="video-container">
+            <video id="video" poster="assets/thumb.jpg">
                 <source src="assets/video.mp4">
                 <span>It's seems you browser doesn't support HTML5 videos. Please update it!</span>
             </video>
-        </div>    
+        </div>
         
         <div class="progress">
             <div id="bar" class="progress-bar"></div>
         </div>
         
         <div class="controlers">
-
             <i class="buttons play-button flaticon-play-button"></i>
-            
             <div class="time-field">0:00 / 0:00</div>
             
             <i class="buttons sound-button flaticon-speaker-1"></i>
-            <div class="buttons sound">
-                <div class="sound-bar"></div>
-            </div>
-
-
+            <div class="buttons sound"><div class="sound-bar"></div></div>
 
             <i class="buttons fullscreen-button flaticon-expand"></i>
-
         </div>
     </div>
+
+    <script src="player.js"></script>
 </body>
 </html>

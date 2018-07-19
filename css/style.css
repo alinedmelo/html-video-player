@@ -1,15 +1,16 @@
 .video-player {
   display: inline-block;
-  user-select: none; }
-  .video-player > .video {
+  user-select: none;
+  background-color: #1e1e1e; }
+  .video-player > .video-container {
     height: 360px;
     width: 640px; }
-    .video-player > .video > video {
+    .video-player > .video-container > #video {
       width: 100%;
       height: 100%; }
   .video-player > .progress {
     background-color: #a7a2a2; }
-    .video-player > .progress > .bar {
+    .video-player > .progress > .progress-bar {
       height: 5px;
       width: 50%;
       background-color: red; }
