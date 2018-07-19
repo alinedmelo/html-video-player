@@ -4,30 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/player-font/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
     <title>HTML5 Video Player</title>
 </head>
 <body>
-    <div id="video-player">
-        <div id="video">
-            <video>
+    <div id="video-player" class="video-player">
+        <div class="video">
+            <video poster="assets/thumb.jpg">
                 <source src="assets/video.mp4">
                 <span>It's seems you browser doesn't support HTML5 videos. Please update it!</span>
             </video>
         </div>    
-        <div id="progress-bar">
-            <div id="bar"></div>
+        
+        <div class="progress">
+            <div id="bar" class="progress-bar"></div>
         </div>
-        <div id="controlers">
-            <i id="play-button" class="flaticon-play-button"></i>
-            <span id="time-field">0:00 / 0:00</span>
+        
+        <div class="controlers">
 
-            <i id="sound-button" class="flaticon-speaker-1"></i>
-            <div id="sound">
-                <div id="sound-bar"></div>
+            <i class="buttons play-button flaticon-play-button"></i>
+            
+            <div class="time-field">0:00 / 0:00</div>
+            
+            <i class="buttons sound-button flaticon-speaker-1"></i>
+            <div class="buttons sound">
+                <div class="sound-bar"></div>
             </div>
 
-            <i id="fullscreen-button" class="flaticon-expand"></i>
+
+
+            <i class="buttons fullscreen-button flaticon-expand"></i>
+
         </div>
     </div>
 </body>
