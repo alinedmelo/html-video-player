@@ -1,0 +1,23 @@
+{
+  "name": "html-video-player",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "compile-sass": "node-sass -w sass/style.scss -o css/",
+    "watch-sass": "node-sass -w sass/style.scss -o css/ --w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alinedmelo/html-video-player.git"
+  },
+  "author": "Aline Dias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alinedmelo/html-video-player/issues"
+  },
+  "homepage": "https://github.com/alinedmelo/html-video-player#readme",
+  "description": "",
+  "devDependencies": {
+    "node-sass": "^4.9.2"
+  }
+}
