@@ -1,17 +1,21 @@
 (function(){
-
     // Global scope variables
     const video = document.querySelector('video');
     const playButton = document.querySelector('.play-button');
-
     const progressContainer = document.querySelector('.progress');
     const pbar = document.querySelector('.progress-bar');
+    const timeField = document.querySelector('.time-field');
 
     // Eventos do player
-    playButton.addEventListener('click', playOrPause);
-    progressContainer.addEventListener('click', skipPlayer);
+    video.load();
+    video.addEventListener('canplay', function() {
 
-    // definindo métodos
+        playButton.addEventListener('click', playOrPause);
+        progressContainer.addEventListener('click', skipPlayer);
+        updatePlayer();
+    });
+
+    // definindo os métodos
     function playOrPause() {
         
         if(video.paused) {
@@ -30,12 +34,14 @@
             window.clearInterval(update);
         }
         
-    };
+    }
 
     function updatePlayer() {
         
         let percentage = (video.currentTime / video.duration) * 100;
         pbar.style.width = percentage + '%';
+
+        timeField.innerHTML = formatTime(video.currentTime) + ' / '  + formatTime(video.duration);
         
         if(video.ended) {
             playButton.classList.remove('flaticon-pause');
@@ -44,7 +50,7 @@
             window.clearInterval(update);
         }
 
-    };
+    }
 
     function skipPlayer(ev) {
         
@@ -59,6 +65,22 @@
         video.currentTime = (mouseX / pbarWidth) * video.duration;
 
         updatePlayer();
-    };
+    }
+
+    function formatTime(timeToFormat) {
+
+        // formatando o tempo do vídeo
+        let seconds = Math.round(timeToFormat);
+        let minutes = Math.floor(timeToFormat/60);
+        let hours = Math.floor(timeToFormat/60) * 60;
+
+        // define os minutos 
+        if(minutes > 0) seconds -= minutes*60;
+        
+        //formata os segundos
+        if(seconds.toString().length === 1) seconds = '0' + seconds;
+
+        return (hours > 0) ? hours + ':' + minutes + ':' + seconds : minutes + ':' + seconds;
+    }
 
 })();
