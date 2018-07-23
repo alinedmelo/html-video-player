@@ -12,7 +12,7 @@
     background-color: #a7a2a2; }
     .video-player > .progress > .progress-bar {
       height: 5px;
-      width: 50%;
+      width: 0%;
       background-color: red; }
   .video-player > .controlers {
     display: flex;
