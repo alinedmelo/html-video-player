@@ -5,13 +5,15 @@
     const progressContainer = document.querySelector('.progress');
     const pbar = document.querySelector('.progress-bar');
     const timeField = document.querySelector('.time-field');
+    const soundButton = document.querySelector('.sound-button');
 
-    // Eventos do player
+    // Init do player
     video.load();
     video.addEventListener('canplay', function() {
 
         playButton.addEventListener('click', playOrPause);
         progressContainer.addEventListener('click', skipPlayer);
+        soundButton.addEventListener('click', muteOrUnmute);
         updatePlayer();
     });
 
@@ -65,6 +67,19 @@
         video.currentTime = (mouseX / pbarWidth) * video.duration;
 
         updatePlayer();
+    }
+
+    function muteOrUnmute() {
+
+        if(!video.muted) {
+            video.muted = true;
+            soundButton.classList.add('flaticon-speaker'); //sound off
+            soundButton.classList.remove('flaticon-speaker-1'); //sound on
+        } else {
+            video.muted = false;
+            soundButton.classList.add('flaticon-speaker-1'); //sound on
+            soundButton.classList.remove('flaticon-speaker'); //sound off
+        }
     }
 
     function formatTime(timeToFormat) {
