@@ -91,6 +91,7 @@
 
         // define os minutos 
         if(minutes > 0) seconds -= minutes*60;
+        if(hours > 0) hours -= minutes*60;
         
         //formata os segundos
         if(seconds.toString().length === 1) seconds = '0' + seconds;
