@@ -6,6 +6,8 @@
     const pbar = document.querySelector('.progress-bar');
     const timeField = document.querySelector('.time-field');
     const soundButton = document.querySelector('.sound-button');
+    const soundContainer = document.querySelector('.sound');
+    const soundBar = document.querySelector('.sound-bar');
 
     // Init do player
     video.load();
@@ -14,6 +16,7 @@
         playButton.addEventListener('click', playOrPause);
         progressContainer.addEventListener('click', skipPlayer);
         soundButton.addEventListener('click', muteOrUnmute);
+        soundContainer.addEventListener('click', volumeControl);
         updatePlayer();
     });
 
@@ -75,11 +78,29 @@
             video.muted = true;
             soundButton.classList.add('flaticon-speaker'); //sound off
             soundButton.classList.remove('flaticon-speaker-1'); //sound on
+            soundBar.style.display = 'none';
         } else {
             video.muted = false;
             soundButton.classList.add('flaticon-speaker-1'); //sound on
             soundButton.classList.remove('flaticon-speaker'); //sound off
+            soundBar.style.display = 'block';
         }
+    }
+
+    function volumeControl(ev) {
+
+        let mouseX = ev.pageX - soundContainer.offsetLeft;
+
+        let sbarWidth = window.getComputedStyle(soundContainer).getPropertyValue('width');
+        sbarWidth = parseFloat(sbarWidth.substr(0, sbarWidth.length - 2));
+
+        video.volume = (mouseX / sbarWidth);
+        soundBar.style.width = (mouseX / sbarWidth)  * 100 + '%';
+
+        video.muted = false;
+        soundButton.classList.add('flaticon-speaker-1'); //sound on
+        soundButton.classList.remove('flaticon-speaker'); //sound off
+        soundBar.style.display = 'block';
     }
 
     function formatTime(timeToFormat) {
@@ -89,7 +110,7 @@
         let minutes = Math.floor(timeToFormat/60);
         let hours = Math.floor(timeToFormat/60) * 60;
 
-        // define os minutos 
+        // formata corretamente
         if(minutes > 0) seconds -= minutes*60;
         if(hours > 0) hours -= minutes*60;
         
