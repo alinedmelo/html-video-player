@@ -109,9 +109,9 @@
     function setFullscreen() {
 
         if(video.requestFullscreen) {
-            video.requestFullscreen();
+            video.webkitEnterFullScreen();
         } else if (video.webkitRequestFullscreen) {
-            video.webkitRequestFullscreen();
+            video.webkitEnterFullScreen();
         }
     }
 
