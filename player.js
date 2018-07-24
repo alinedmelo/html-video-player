@@ -8,17 +8,20 @@
     const soundButton = document.querySelector('.sound-button');
     const soundContainer = document.querySelector('.sound');
     const soundBar = document.querySelector('.sound-bar');
+    const fullScreen = document.querySelector('.fullscreen-button');
 
-    // Init do player
-    video.load();
+    // Init do player    
     video.addEventListener('canplay', function() {
 
         playButton.addEventListener('click', playOrPause);
         progressContainer.addEventListener('click', skipPlayer);
         soundButton.addEventListener('click', muteOrUnmute);
         soundContainer.addEventListener('click', volumeControl);
+        fullScreen.addEventListener('click', setFullscreen);
+
         updatePlayer();
     });
+    video.load();
 
     // definindo os métodos
     function playOrPause() {
@@ -101,6 +104,15 @@
         soundButton.classList.add('flaticon-speaker-1'); //sound on
         soundButton.classList.remove('flaticon-speaker'); //sound off
         soundBar.style.display = 'block';
+    }
+
+    function setFullscreen() {
+
+        if(video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        }
     }
 
     function formatTime(timeToFormat) {
